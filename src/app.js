@@ -1,6 +1,7 @@
-import express  from 'express'
-import rotas from './routes'
-import './database'
+import express  from 'express';
+import path from 'path';
+import rotas from './routes';
+import './database';
 
 class App{
     constructor(){
@@ -12,6 +13,7 @@ class App{
 
     middle_ware(){
         this.servidor.use(express.json())
+        this.servidor.use('/files', express.static(path.resolve(__dirname, '..', 'temp', 'uploads' )))
     }
 
     rotas_serv(){
